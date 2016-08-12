@@ -244,8 +244,13 @@ public class BaseController {
         for (Product o : productList) {
             ordering.setSum(ordering.getSum() + o.getPrice_product());
         }
-        orderingSer.addOrEdit(ordering);
-        httpSession.removeAttribute("products");
+        for (Product p : productList) {
+            if (p != null) {
+                orderingSer.addOrEdit(ordering);
+                httpSession.removeAttribute("products");
+            }
+        }
+
         return "redirect:/";
     }
 
@@ -263,9 +268,11 @@ public class BaseController {
         List<Product> products = (List<Product>) httpSession.getAttribute("products");
         Product product1 = productSer.findOneById(Integer.parseInt(id_product));
         Iterator<Product> iter = products.iterator();
+        int count = 0;
         while (iter.hasNext()) {
-            if (iter.next().getId_product() == product1.getId_product()) {
+            if (iter.next().getId_product() == product1.getId_product() && (count == 0)) {
                 iter.remove();
+                count++;
             }
             products = (List<Product>) httpSession.getAttribute("products");
         }
