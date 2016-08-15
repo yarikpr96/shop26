@@ -15,8 +15,7 @@ public interface CustomerRepo extends JpaRepository<Customer, Integer>{
     @Query ( " FROM Customer u WHERE u.email LIKE :login OR u.mobile_phone LIKE :login" )
     Customer findByLogin(@Param("login") String login);
 
-//    Customer findByEmailOrMobile_phone(String email, String mobile_phone);
-//List<Customer> findByEmail(String email);
+
     List<Customer>findAll ();
 
 }

@@ -11,9 +11,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id_product;
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false)
     private String name_product;
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false)
     private String brand;
     @Column(nullable = false, length = 10)
     private double price_product;

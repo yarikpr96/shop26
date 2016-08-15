@@ -8,7 +8,7 @@
 
 
 
-<div style="width: 100% ; height: 100px; background-color:limegreen; color: white; float: none; ">
+<div style="width: 100% ; height: 100px; background-image:url(/resources/image/4.jpg);; color: white; float: none; ">
     <style>
         .loading3 {
             border-radius: 50%;

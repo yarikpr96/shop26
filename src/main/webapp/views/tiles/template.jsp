@@ -15,12 +15,9 @@
 <body style="
 margin: 0px;
         padding: 0px;
-        background: url(http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg);
+        background: url(/resources/image/3.jpg);">
 
 
-/*height:140%;*/
-/*float: inherit*/
-">
 <div><tiles:insertAttribute name="header"/></div>
 <div <tiles:insertAttribute name="menu"/> </div>
 <div><tiles:insertAttribute name="body"/> </div>

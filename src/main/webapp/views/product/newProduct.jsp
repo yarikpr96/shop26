@@ -8,7 +8,7 @@
             <a>Ім'я <input type="text" name="name_product"></a>
             <a>Бренд <input type="text" name="brand"></a>
             <a>Ціна <input type="number" name="price_product"></a>
-            <a>Опис <input type="text" name="description_product"></a>
+            <a>Опис <textarea  name="description_product"></textarea></a>
             <a>Фото <input type="file" name="image"></a>
             <button type="submit">Add!</button>
         </form>

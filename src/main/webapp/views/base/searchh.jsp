@@ -15,7 +15,7 @@ height: 100%;">
     <c:forEach items="${product}" var="a">
         <a href="/productPage/${a.id_product}">
 
-            <div  style=" margin:1%;font-size: 20px; text-align: center; width: 380px; height: 280px; background-color: gainsboro; color: #101010; float: left; position: absolute; border: 2px double black; border-radius: 0px;">
+            <div  style=" margin:1%;font-size: 20px; text-align: center; width: 380px; height: 280px; background-color: gainsboro; color: #101010; float: left; position: static; border: 2px double black; border-radius: 0px;">
                 <img src="data:image/jpeg;base64,${a.image}" width="132" height="174" class="leftimg"/>
                 <p style="font-size: 20px;">Name: ${a.name_product}</p>
                 <p style="font-size: 20px;">Brand: ${a.brand}</p>
