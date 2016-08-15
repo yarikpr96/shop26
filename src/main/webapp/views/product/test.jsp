@@ -22,6 +22,7 @@ overflow: scroll;">
     <c:forEach items="${product}" var="a">
         <a href="/productPage/${a.id_product}">
             <div style="font-size: 20px; text-align: center; width: 280px; height: 280px; background-color: gainsboro; color: #101010; float: left; margin: 22px; border: 2px double black; border-radius: 0px;">
+                <%--<img src="data:image/jpeg;base64,${a.image}" width="132" height="174" class="leftimg"/>--%>
                 <p style="font-size: 20px;">${a.name_product}</p>
                 <p style="font-size: 20px;">${a.brand}</p>
                 <p style="font-size: 20px;">${a.price_product}</p>

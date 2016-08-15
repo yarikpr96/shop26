@@ -9,16 +9,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
 <h1 style="text-align: center;float: inherit">Товари</h1>
 <div style="
-/*height: 90%;*/
-overflow: scroll;">
+height: auto;
+/*overflow: scroll;*/
+">
 
     <div style="width: 100% ; height: 35px; background-color:aliceblue; color: white; float: none;">
         <style>
@@ -115,11 +111,19 @@ overflow: scroll;">
             <p><input id="submit" type="submit" value="Пошук"></p>
         </form:form>
     </div>
+    <style>
+        .leftimg {
+            float:left;
+            margin: 7px 7px 7px 0;
+        }
 
-<c:forEach items="${product}" var="a">
+    </style>
+    <div>
+    <c:forEach items="${product}" var="a">
     <a href="/productPage/${a.id_product}">
 
-    <div  style="font-size: 20px; text-align: center; width: 280px; height: 280px; background-color: gainsboro; color: #101010; float: left; margin: 22px; border: 2px double black; border-radius: 0px;">
+    <div  style="font-size: 20px; text-align: center; width: 380px; height: 280px; background-color: gainsboro; color: #101010; float: left; margin: 28px; border: 2px double black; border-radius: 0px;">
+        <img src="data:image/jpeg;base64,${a.image}" width="132" height="174" class="leftimg"/>
         <p style="font-size: 20px;">Name: ${a.name_product}</p>
         <p style="font-size: 20px;">Brand: ${a.brand}</p>
         <p style="font-size: 20px;">Price: ${a.price_product}</p>
@@ -131,17 +135,9 @@ overflow: scroll;">
             <button type="submit">Видалити</button>
         </form:form></sec:authorize></p>
     </div>
-        <%--<div style="width: 300px; height: 300px; background-color: darkgrey; color: white; float: left; margin: 10px; border: 3px double black; border-radius: 50%;">--%>
-            <%--<p style="text-align: center; padding: 0 10px; font-size: 16pt">${a.name_product}</p>--%>
-            <%--<p style="text-align: center; padding: 0 10px; font-size: 16pt">${a.brand}</p>--%>
-            <%--<p style="text-align: center; padding: 0 10px; font-size: 16pt">${a.price_product}</p>--%>
-            <%--<p style="text-align: center; padding: 0 10px; font-size: 16pt">${a.description_product}</p>--%>
-            <%--<p style="text-align: center"><a href="/productEdit/${a.id_product}">Edit</a></p>--%>
-            <%--<p style="text-align: center"><form:form cssStyle="text-align: center" action="/product/delete/${a.id_product}"><button type="submit">Delete</button> </form:form></p>--%>
-        <%--</div>--%>
+
     </a>
 </c:forEach>
+    </div>
 </div>
 
-</body>
-</html>

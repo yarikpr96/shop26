@@ -16,7 +16,7 @@
 margin: 0px;
         padding: 0px;
         background: url(http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg);
-{
+
 
 /*height:140%;*/
 /*float: inherit*/

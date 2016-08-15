@@ -1,8 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div style=" height: 100%;">
-    <div style="font-size: 16px; text-align: center; width: 280px; height: 570px; background-color: #999999; color: white; float: inherit;position: absolute;left:41%; margin: 0px; border: 3px double black; border-radius: 0px;">
+<div style=" height: 120%;">
+    <div style="font-size: 16px; text-align: center; width: 280px; height: auto; background-color: #999999; color: white; float: inherit;position: absolute;left:41%; margin: 0px; border: 3px double black; border-radius: 0px;">
 
         <form:form action="/registration" method="post" modelAttribute="customer">
             <p>Name</p>

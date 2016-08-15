@@ -1,5 +1,7 @@
 package Class.Entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +19,9 @@ public class Product {
     private double price_product;
     @Column
     private String description_product;
-
+    @Column
+    @Lob
+    private byte[] image = new byte[1];
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "product_ordering", joinColumns = @JoinColumn(name = "id_product"), inverseJoinColumns = @JoinColumn(name = "id_order"))
     List<Ordering> orderingList;
@@ -25,11 +29,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name_product, String brand, double price_product, String description_product) {
-        this.name_product = name_product;
-        this.brand = brand;
-        this.price_product = price_product;
-        this.description_product = description_product;
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public int getId_product() {
@@ -88,4 +93,6 @@ public class Product {
                 ", price"+" " + price_product +" грн."+" "
                 ;
     }
+
+
 }

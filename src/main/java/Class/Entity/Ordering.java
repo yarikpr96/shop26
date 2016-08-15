@@ -1,5 +1,7 @@
 package Class.Entity;
 
+import Class.DTO.ProductDTO;
+
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;

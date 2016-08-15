@@ -1,5 +1,6 @@
 package Class.Controllers;
 
+import Class.DTO.ProductDTO;
 import Class.Entity.Customer;
 import Class.Entity.Ordering;
 import Class.Entity.Product;
@@ -16,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,50 +59,60 @@ public class BaseController {
 
     @RequestMapping ( value = "/allProduct", method = RequestMethod.GET )
     private String allProduct(Model model) {
-        List<Product> productList = productSer.findAll();
+        List<ProductDTO> productList = productSer.findAll();
         model.addAttribute("product", productList);
         return "views-product-allProduct";
 
     }
 
+
     @RequestMapping ( value = "/newProduct", method = RequestMethod.GET )
-    private String createNewProduct(Model model) {
-        model.addAttribute("product", new Product());
+    private String createNewProduct() {
         return "views-product-newProduct";
     }
 
-
     @RequestMapping ( value = "/newProduct", method = RequestMethod.POST )
-    public String createProduct(@ModelAttribute Product product) {
+    public String createProduct(@RequestParam ( "name_product" ) String name_product, @RequestParam ( "brand" ) String brand,
+                                @RequestParam ( "price_product" ) double price_product, @RequestParam ( "description_product" )
+                                        String description_product, @RequestParam ( "image" ) MultipartFile multipartFile) {
+        Product product = new Product();
+        product.setName_product(name_product);
+        product.setBrand(brand);
+        product.setPrice_product(price_product);
+        product.setDescription_product(description_product);
+        try {
+            product.setImage(multipartFile.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         productSer.addOrEdit(product);
         return "redirect:/allProduct";
     }
 
-
     @RequestMapping ( value = "/productPage/{id_product}", method = RequestMethod.GET )
     public String productPage(@PathVariable String id_product, Model model) {
-        Product product = productSer.findOneById(Integer.parseInt(id_product));
+        ProductDTO product = productSer.findOne(Integer.parseInt(id_product));
         model.addAttribute("product", product);
         return "views-product-productPage";
     }
 
     @RequestMapping ( value = "/typeA", method = RequestMethod.GET )
     private String typeA(Model model) {
-        List<Product> productList = productSer.findAll();
+        List<ProductDTO> productList = productSer.findAll();
         model.addAttribute("product", productList);
         return "views-product-typeA";
     }
 
     @RequestMapping ( value = "/typeB", method = RequestMethod.GET )
     private String typeB(Model model) {
-        List<Product> productList = productSer.findAll();
+        List<ProductDTO> productList = productSer.findAll();
         model.addAttribute("product", productList);
         return "views-product-typeB";
     }
 
     @RequestMapping ( value = "/typeC", method = RequestMethod.GET )
     private String typeC(Model model) {
-        List<Product> productList = productSer.findAll();
+        List<ProductDTO> productList = productSer.findAll();
         model.addAttribute("product", productList);
         return "views-product-typeC";
     }
@@ -162,10 +175,15 @@ public class BaseController {
     }
 
     @RequestMapping ( value = "/productEdit", method = RequestMethod.POST )
-    public String edit(@ModelAttribute Product product) {
-        productSer.addOrEdit(product);
+    public String edit(@RequestParam ( "id_product" ) int id_product, @RequestParam ( "name_product" ) String name_product, @RequestParam ( "brand" ) String brand,
+                       @RequestParam ( "price_product" ) double price_product, @RequestParam ( "description_product" )
+                               String description_product, @RequestParam ( "image" ) MultipartFile multipartFile) {
+        productSer.edit(id_product, name_product, brand, price_product, description_product, multipartFile);
+
+
         return "redirect:/allProduct";
     }
+
 
     @RequestMapping ( value = "/product/delete/{id_product}", method = RequestMethod.POST )
     public String delete(@PathVariable String id_product) {
@@ -192,7 +210,7 @@ public class BaseController {
 
     @RequestMapping ( value = "/searchh", method = RequestMethod.POST )
     public String search(Model model, @RequestParam ( "name_product" ) String name_product) {
-        List<Product> productList = productSer.findByName(name_product);
+        List<ProductDTO> productList = productSer.findByName(name_product);
         model.addAttribute("product", productList);
 //        System.out.println(productList);
         return "views-base-searchh";

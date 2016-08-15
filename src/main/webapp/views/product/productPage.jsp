@@ -6,32 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div style="height: 120%">
-<div style="
-position: absolute; /* Абсолютное позиционирование */
-            width: 300px; /* Ширина слоя в пикселах */
-            height: 300px; /* Высота слоя в пикселах */
-            left: 37.5%; /* Положение слоя от левого края */
-            top: 30%; /* Положение слоя от верхнего края */
-            /*margin-left: -150px; !* Отступ слева *!*/
-            /*margin-top: -100px; !* Отступ сверху *!*/
-            background: #fc0; /* Цвет фона */
+    <style>
+        .leftimg {
+            float:left;
+            margin: 7px 7px 7px 0;
+        }
 
-            /*padding: 10px; !* Поля вокруг текста *!*/
-            overflow: auto;
-            font-size: 15pt;
-            text-align: center">
+    </style>
+    <div  style="font-size: 20px; text-align: left; width: 100%; height: 120%; background-color: gainsboro; color: #101010;position: absolute; float: left; ">
+        <img src="data:image/jpeg;base64,${product.image}" width="450" height="550" class="leftimg"/>
+        <p style="font-size: 20px;margin-top: 3%;margin-left: 1%">Name: ${product.name_product}</p>
+        <p style="font-size: 20px;">Brand: ${product.brand}</p>
+        <p style="font-size: 20px;">Price: ${product.price_product}</p>
+        <p style="font-size: 20px;">Description: ${product.description_product}</p>
 
-    <p>Name:${product.name_product}</p>
-    <p>Brand:${product.brand}</p>
-    <p>Price:${product.price_product}</p>
-    <p>Description:${product.description_product}</p>
 </div>
 </div>
-</body>
-</html>
